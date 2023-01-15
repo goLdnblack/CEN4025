@@ -7,17 +7,11 @@ class Node
 	String folderName;
 	ArrayList<Node> folders = new ArrayList<>();
 
-	// Default
+	// Default constructor
 	public Node(){ }
 
 	public Node(String folderName)
 	{
-		this.folderName = folderName;
-	}
-
-	public Node(int fileCount, String folderName)
-	{
-		this.fileCount = fileCount;
 		this.folderName = folderName;
 	}
 
@@ -56,12 +50,14 @@ class Node
 		folders.add(n);
 	}
 
+	// Print each node's data
 	public void printNode(String indent, String subfolder)
 	{
 		System.out.print(indent + "*Folder*: " + this.folderName +
 						"\n" + indent + "File count: " + this.fileCount +
 						"\n" + indent + "Combined file size: " + this.totalSize);
-
+		
+		// Formatting
 		if (folders.size() == 0)
 		{
 			System.out.println();

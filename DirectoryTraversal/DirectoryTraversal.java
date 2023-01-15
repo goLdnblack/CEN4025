@@ -5,20 +5,17 @@ public class DirectoryTraversal
 {
 
 	// Print the data structure recursively
-	public static void recurPrintTrie(Node head, String indent, String subfolder)
+	public static void printTrie(Node head, String indent, String subfolder)
 	{
-		// Print the indent level of node
-
+		// Call each node's print function
 		head.printNode(indent, subfolder);
 
 		// Next level below
-		//if (head.folders.size() != 0)
-		//	System.out.print("|\n");
-		
 		for (Node n : head.folders)
 		{
-			//System.out.print(indent + "");
-			recurPrintTrie(n, (indent + "|_"), (subfolder + " |"));
+			// Adjust indent level each time printTrie
+			// is called
+			printTrie(n, (indent + "|_"), (subfolder + " |"));
 		}
 	}
 
@@ -37,8 +34,8 @@ public class DirectoryTraversal
 
 		File[] f = dir.listFiles();
 
-		// Assign current folder number of files
-		// and size of files
+		// Assign folder nodes, file count and
+		// file sizes
 		for (File file : f)
 		{
 
@@ -67,7 +64,6 @@ public class DirectoryTraversal
 	public static void main(String[] args)
 	{
 		String userDir = args[0];
-		//int userDir = -1;
 		
 		// Check if file/folder exists
 		try
@@ -80,19 +76,18 @@ public class DirectoryTraversal
 			}
 			else
 			{
+				// Build first node as the head of the
+				// data structure
 				Node head = buildTrie(userDir);
-
-				recurPrintTrie(head, "", "|");
+				
+				// Print the data structure with characters
+				// to help indent the output
+				printTrie(head, "", "|");
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-
-		// Print folder directory
-		// /home/pi/Documents/Valencia2023/Fall/CEN4802
-		
-		//printTrie();
 	}
 }
