@@ -1,0 +1,22 @@
+*Folder*: TestTraversal
+File count: 2
+Combined file size: 7644 kb
+|
+|_*Folder*: A
+|_File count: 1
+|_Combined file size: 14700 kb
+| |
+|_|_*Folder*: B
+|_|_File count: 0
+|_|_Combined file size: 0 kb
+|_*Folder*: C
+|_File count: 0
+|_Combined file size: 0 kb
+| |
+|_|_*Folder*: D
+|_|_File count: 1
+|_|_Combined file size: 19110 kb
+| | |
+|_|_|_*Folder*: E
+|_|_|_File count: 1
+|_|_|_Combined file size: 19980 kb
