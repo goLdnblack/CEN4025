@@ -1,3 +1,8 @@
+// Jesus Sanchez-Rivera
+// CEN 4025
+// Prof Walauskis
+// January 16, 2023
+
 import java.io.File;
 import java.io.IOException;
 
@@ -16,6 +21,22 @@ public class DirectoryTraversal
 			// Adjust indent level each time printTrie
 			// is called
 			printTrie(n, (indent + "|_"), (subfolder + " |"));
+		}
+	}
+
+	// Print the data structure recursively
+	public static void printTrie(Node head, StringBuilder indent, StringBuilder subfolder)
+	{
+		// Call each node's print function
+		head.printNode(indent.toString(), subfolder.toString());
+
+		// Next level below
+		for (Node n : head.folders)
+		{
+			// Adjust indent level each time printTrie
+			// is called
+			//printTrie(n, (indent + "|_"), (subfolder + " |"));
+			printTrie(n, indent.append("|_"), subfolder.append(" |"));
 		}
 	}
 
@@ -83,6 +104,9 @@ public class DirectoryTraversal
 				// Print the data structure with characters
 				// to help indent the output
 				printTrie(head, "", "|");
+				StringBuilder indent = new StringBuilder("");
+				StringBuilder subfolder = new StringBuilder("|");
+				//printTrie(head, indent, subfolder);
 			}
 		}
 		catch (Exception e)

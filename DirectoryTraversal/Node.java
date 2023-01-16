@@ -1,3 +1,8 @@
+// Jesus Sanchez-Rivera
+// CEN 4025
+// Prof Walauskis
+// January 16, 2023
+
 import java.util.ArrayList;
 
 class Node
