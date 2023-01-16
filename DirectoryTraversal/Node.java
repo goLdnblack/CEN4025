@@ -55,7 +55,7 @@ class Node
 	{
 		System.out.print(indent + "*Folder*: " + this.folderName +
 						"\n" + indent + "File count: " + this.fileCount +
-						"\n" + indent + "Combined file size: " + this.totalSize);
+						"\n" + indent + "Combined file size: " + this.totalSize + " kb");
 		
 		// Formatting
 		if (folders.size() == 0)
