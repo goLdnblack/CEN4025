@@ -8,22 +8,6 @@ import java.io.IOException;
 
 public class DirectoryTraversal
 {
-
-	// Print the data structure recursively
-	public static void printTrie(Node head, String indent, String subfolder)
-	{
-		// Call each node's print function
-		head.printNode(indent, subfolder);
-
-		// Next level below
-		for (Node n : head.folders)
-		{
-			// Adjust indent level each time printTrie
-			// is called
-			printTrie(n, (indent + "|_"), (subfolder + " |"));
-		}
-	}
-
 	// Print the data structure recursively
 	public static void printTrie(Node head, StringBuilder indent, StringBuilder subfolder)
 	{
@@ -35,8 +19,9 @@ public class DirectoryTraversal
 		{
 			// Adjust indent level each time printTrie
 			// is called
-			//printTrie(n, (indent + "|_"), (subfolder + " |"));
 			printTrie(n, indent.append("|_"), subfolder.append(" |"));
+			indent.setLength(indent.length() - 2);
+			subfolder.setLength(subfolder.length() - 2);
 		}
 	}
 
@@ -103,10 +88,9 @@ public class DirectoryTraversal
 				
 				// Print the data structure with characters
 				// to help indent the output
-				printTrie(head, "", "|");
 				StringBuilder indent = new StringBuilder("");
 				StringBuilder subfolder = new StringBuilder("|");
-				//printTrie(head, indent, subfolder);
+				printTrie(head, indent, subfolder);
 			}
 		}
 		catch (Exception e)
