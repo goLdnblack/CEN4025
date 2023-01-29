@@ -4,32 +4,81 @@ import java.util.ArrayList;
 
 class ActivityList
 {
-    ArrayList<String> list = new ArrayList<>();
+    // Each list contains activities for that
+    // specific list
+    String listname;
+    ArrayList<Activity> list = new ArrayList<>();
 
     public ActivityList() {}
 
-    public void add(String activity)
+    public ActivityList(String listname)
     {
-        list.add(activity);
+        this.listname = listname;
+    }
+
+    public Activity search(String activity)
+    {
+        for (Activity task : list)
+        {
+            if (task.taskName.equals(activity))
+                return task;
+        }
+
+        return null;
+    }
+
+    public void setListName(String name)
+    {
+        this.listname = name;
+    }
+
+    public void add(String activity, String description)
+    {
+        Activity task = new Activity(activity, description);
+        list.add(task);
     }
 
     public void remove(String activity)
     {
-        list.remove(activity);
+        Activity task = search(activity);
+
+        if (task != null)
+            list.remove(task);
     }
 
-    public void modify(String original, String activity)
+    public void modifyTask(String original, String activity)
     {
-        int i = list.indexOf(original);
-        list.set(i, activity);
+        Activity task = search(original);
+
+        if (task == null)
+        {
+            System.out.println("No activity found in list.");
+        }
+        else
+        {
+            task.setTask(activity);
+        }
+    }
+
+    public void modifyDescription(String activity, String description)
+    {
+        Activity task = search(activity);
+
+        if (task == null)
+        {
+            System.out.println("No activity found in list.");
+        }
+        else
+        {
+            task.setDescription(description);
+        }
     }
 
     public void show()
     {
-        int count = 0;
-        System.out.println("To Do List");
-
-        for (String a : list)
-            System.out.println(++count + ". " + a);
+        for (Activity task : list)
+        {
+            System.out.println(task.print());
+        }
     }
 }
